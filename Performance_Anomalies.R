@@ -6,9 +6,8 @@ library(tidyverse)
 library(ggplot2)
 library(ggnewscale)
 
-Osylvanys<-read.csv2("Data/O_sylvanus.csv", sep=",")
-Osylvanys <- Osylvanys %>%
-  mutate(across(c(1,2), as.numeric))
+# Global adapted sp: Ochlodes sylvanus
+Osylvanys<-read.csv("Data/O_sylvanus.csv", sep=",")
 predicted<-read.delim2("Data/O_sylvanus_predicted.txt", sep=";")
 predicted <- predicted %>%
   mutate(across(c(1:5), as.numeric))
@@ -24,3 +23,23 @@ Os_plt<-Os_pts+new_scale_color()+geom_line(predicted, mapping = aes(x, predicted
   xlab("Climatic anomaly of the year") + theme_bw()+ theme(legend.position = "none")+
   theme(panel.grid.minor = element_blank(),panel.grid = element_blank(),panel.border = element_blank(),axis.line = element_line(colour = "black"))
 Os_plt
+
+
+# Local adapted sp: Brentis ino
+Bino<-read.csv("Data/B_ino.csv", sep=",")
+predictedB<-read.csv("Data/B_ino_predicted.csv")
+predictedB$group <- as.character(predictedB$group)
+
+B_pts<-ggplot(data = Bino, aes(y = resid, x = local.anomaly))+ theme_bw()+ theme(legend.position = "none")+
+  ylim(c(-2, 2.2))+ xlim(c(-7,3))+
+  theme(panel.border = element_blank(), axis.line = element_line(colour = "black"))+
+  geom_point(aes(colour = res.color), alpha=0.3)+scale_colour_identity(name = "points")
+B_plt<-B_pts+new_scale_color()+
+  geom_line(predictedB, mapping = aes(x, predicted, colour = group), size=0.5) + 
+  scale_color_manual(name = "lines",values=rev(c("#FF0000FF","#FF0000FF", "#FF2A00FF" ,"#FF5500FF" ,"#FF8000FF" ,"#FFAA00FF" ,"#FFD500FF","#FFFF00FF" ,"#FFFF40FF", "#FFFFBFFF", "#FFFFBFFF", "#F7FBFF" ,"#DEEBF7" ,"#C6DBEF", "#9ECAE1", "#6BAED6", "#4292C6", "#2171B5", "#08519C", "#08306B","#08306B")))+
+  annotate("text", x = -7, y = 2.2, label = expression(italic("Brenthis ino ")) , vjust = 0.3, hjust = 0)+
+  ylab("Population change")+
+  xlab("Climatic anomaly of the year") + theme_bw()+ theme(legend.position = "none")+
+  theme(panel.grid.minor = element_blank(),panel.grid = element_blank(),panel.border = element_blank(),axis.line = element_line(colour = "black"))
+B_plt
+
