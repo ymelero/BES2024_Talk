@@ -11,7 +11,7 @@ library(ggplot2)    # For data visualization
 library(rgbif)      # For accessing GBIF occurrence data
 
 # Get occurrence data from GBIF for Ochlodes sylvanus in Europe
-occ <- occ_data(scientificName = "Satyrium spini",  # Species name
+occ <- occ_data(scientificName = "Brenthis ino",  # Species name
                 hasCoordinate = TRUE,                  # Filter to include only records with coordinates
                 continent = "Europe",                  # Limit data to Europe
                 limit = 50000)                         # Maximum number of records to retrieve
