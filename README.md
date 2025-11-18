@@ -1,6 +1,5 @@
 # Butterfly responses to weather anomalies depend on local adaptation and range position
-<img width="958" height="47" alt="image" src="https://github.com/user-attachments/assets/1c2762e8-3cfb-4dc4-a033-25ab2044faac" />
-
+Based on [Melero et al. (2025)](https://www.nature.com/articles/s42003-025-08032-9), [Melero et al. (2022)](https://www.nature.com/articles/s42003-022-03088-3), [Evans et al. (2022)](https://onlinelibrary.wiley.com/doi/10.1111/geb.13527)
 
 🦋 Pdf, Data and Codes for the graphs and maps of my talk entitled
 "Butterfly responses to weather anomalies depend on local adaptation and range position"
